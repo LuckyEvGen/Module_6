@@ -1,16 +1,52 @@
-# This is a sample Python script.
+class Animal:
+    alive = True
+    fed = False
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def __init__(self, name):
+        self.name = name
+
+    def eat(self, food):
+        if food.edible:
+            self.fed = True
+            print(f'{self.name} съел {food.name}')
+        else:
+            self.alive = False
+            print(f'{self.name} не стал есть {food.name}')
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
+
+class Plant:
+    edible = False
+
+    def __init__(self, name):
+        self.name = name
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class Mammal(Animal):
+    pass
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+class Predator(Animal):
+    pass
+
+
+class Flower(Plant):
+    pass
+
+
+class Fruit(Plant):
+    edible = True
+
+
+a1 = Predator('Волк с Уолл-Стрит')
+a2 = Mammal('Хатико')
+p1 = Flower('Цветик семицветик')
+p2 = Fruit('Заводной апельсин')
+print(a1.name)
+print(p1.name)
+print(a1.alive)
+print(a2.fed)
+a1.eat(p1)
+a2.eat(p2)
+print(a1.alive)
+print(a2.fed)
